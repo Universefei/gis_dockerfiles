@@ -8,14 +8,14 @@ ENV BUILD_DATE 2015-06-13
 
 # prepare tools
 RUN apt-get update
-RUN apt-get install software-properties-common
-RUN add-apt-repository ppa:mapnik/nightly-2.3
+RUN apt-get install -yqq software-properties-common
+RUN add-apt-repository -y ppa:mapnik/nightly-2.3
 RUN apt-get update
 RUN apt-get install -yqq git
 
 
 # install tilestache prerequesites
-RUN apt-get install libmapnik mapnik-utils python-mapnik build-essential autoconf libtool pkg-config python-opengl python-imaging python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev zlib1g-dev libjpeg-dev python-psycopg2
+RUN apt-get install -yqq libmapnik mapnik-utils python-mapnik build-essential autoconf libtool pkg-config python-opengl python-imaging python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev zlib1g-dev libjpeg-dev python-psycopg2
 RUN pip install modestmaps simplejson werkzeug pillow mapnik shapely protobuf mapbox_vector_tile
 
 
@@ -26,7 +26,7 @@ RUN cd ~/tilestache && python setup.py install
 
 WORKDIR /root/tilestache
 # ENTRYPOINT ["./index.js", "start"]
-CMD ["./scripts/tilestache-server.py"]
+CMD ["python", "./scripts/tilestache-server.py"]
 
 EXPOSE 8080
 
