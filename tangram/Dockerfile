@@ -24,7 +24,7 @@ RUN npm install -g http-server
 
 WORKDIR /root/tangram
 # ENTRYPOINT ["./index.js", "start"]
-# CMD ["--host=*.*.*.*"]
+CMD ["./index.js", "."]
 
 # EXPOSE 8888
 
