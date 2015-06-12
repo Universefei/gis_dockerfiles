@@ -22,10 +22,11 @@ RUN cd ~/mapbox-studio && npm install
 
 
 WORKDIR /root/mapbox-studio
-ENTRYPOINT ["./index.js"]
+# ENTRYPOINT ["./index.js"]
+CMD ["./index.js"]
 #CMD ["--host=*.*.*.*"]
 
-#EXPOSE 8888
+EXPOSE 3000
 
 # $> docker run -d -P --name tilestream feilunzhou/tilestream
 # $> docer port tilestream
